@@ -21,16 +21,26 @@ body { margin: 0; }
   padding: calc(2 * var(--module));
   background: var(--metal);
 }
-.window::before, .menu::before {
+.window::before, .window::after, .menu::before, .menu::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+.window::before, .menu::before {
   background:
-    linear-gradient(to bottom, var(--rail)) top / 100% var(--rim) no-repeat,
-    linear-gradient(to top, var(--rail)) bottom / 100% var(--rim) no-repeat,
     linear-gradient(to right, var(--rail)) left / var(--rim) 100% no-repeat,
     linear-gradient(to left, var(--rail)) right / var(--rim) 100% no-repeat;
+}
+.window::after, .menu::after {
+  background:
+    linear-gradient(to bottom, var(--rail)) top / 100% var(--rim) no-repeat,
+    linear-gradient(to top, var(--rail)) bottom / 100% var(--rim) no-repeat;
+  clip-path: polygon(
+    0 0, 100% 0, calc(100% - var(--rim)) var(--rim), var(--rim) var(--rim), 0 0,
+    0 100%, var(--rim) calc(100% - var(--rim)),
+    calc(100% - var(--rim)) calc(100% - var(--rim)), 100% 100%, 0 100%
+  );
 }
 .window { --rim: calc(2 * var(--module)); }
 .window > svg[hidden] {
@@ -143,3 +153,4 @@ a:focus-visible { outline: 2px solid var(--bronze); outline-offset: -2px; }
 @media (max-width: 42rem) {
   .collage { grid-template-columns: minmax(0, 1fr); grid-template-areas: "list" "preview"; }
 }
+
