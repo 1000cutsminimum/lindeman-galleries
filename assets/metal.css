@@ -2,9 +2,9 @@
   --module: 7px;
   --band: var(--module);
   --pewter: url("satin-pewter.jpg");
-  --metal: linear-gradient(104deg, #96887b36, #fff9 24%, #a79e931a 51%, #fff6 75%, #8d80743b), var(--pewter) center / 100% 100%;
+  --metal: linear-gradient(104deg, #514c4554, #a3988c0d 13%, #fffdf1a3 29%, #514a423d 50%, #fffdf3a8 72%, #514a4254), var(--pewter) center / 100% 100%;
   /* Read from the outer edge inward: raised lip, recessed channel, inner bead. */
-  --rail: #393431 0%, #8b8277 5%, #fefaf2 10%, #f3ede4 18%, #b6ab9e 26%, #655b50 32%, #433b34 37%, #4c433a 45%, #75695b 51%, #c4b8a9 58%, #a19587 65%, #fefaf2 71%, #e0d6c9 78%, #aa9c8c 87%, #60554a 94%, #38312b 100%;
+  --rail: #292622 0%, #8e8881 5%, #fffefb 10%, #fffcf6 15%, #c4bdb4 23%, #756c62 29%, #2e2925 37%, #35302c 45%, #7e766e 51%, #d8d2ca 58%, #898077 64%, #fff 70%, #f3eee8 76%, #bbb0a5 84%, #584f47 94%, #24201d 100%;
   --ink: #272420;
   --bronze: #784a25;
   background: #cbc7c2;
@@ -109,8 +109,8 @@ body { margin: 0; }
 }
 .menu a:is(:hover, :focus-visible),
 .menu:not(:has(a:hover, a:focus-visible)) li:first-child a {
-  background: linear-gradient(95deg, #f4efe826, #fff9f1b3 50%, #f4efe826);
-  box-shadow: inset 0 -1px #665f57, inset 0 -3px #fdf8f1;
+  background: linear-gradient(100deg, #b8b0a630, #fffefa9c 38%, #fffefad6 58%, #9b938733);
+  box-shadow: inset 0 -1px #514840, inset 0 -3px #fffdf8;
 }
 .menu a:is(:hover, :focus-visible) svg,
 .menu:not(:has(a:hover, a:focus-visible)) li:first-child svg { visibility: visible; }
