@@ -3,7 +3,8 @@
   --band: var(--module);
   --pewter: url("satin-pewter.jpg");
   --metal: linear-gradient(104deg, #96887b36, #fff9 24%, #a79e931a 51%, #fff6 75%, #8d80743b), var(--pewter) center / 100% 100%;
-  --rail: #514b45 0%, #fdfaf4 9%, #ddd7ce 17%, #7b7268 28%, #504a44 33%, #faf6ef 36%, #aaa197 48%, #61594f 64%, #fffdf7 68%, #c8bfb2 79%, #5d554c 91%, #35302b 100%;
+  /* Read from the outer edge inward: raised lip, recessed channel, inner bead. */
+  --rail: #393431 0%, #8b8277 5%, #fefaf2 10%, #f3ede4 18%, #b6ab9e 26%, #655b50 32%, #433b34 37%, #4c433a 45%, #75695b 51%, #c4b8a9 58%, #a19587 65%, #fefaf2 71%, #e0d6c9 78%, #aa9c8c 87%, #60554a 94%, #38312b 100%;
   --ink: #272420;
   --bronze: #784a25;
   background: #cbc7c2;
@@ -18,21 +19,23 @@ body { margin: 0; }
   min-height: 100svh;
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: calc(2 * var(--module));
+  padding: var(--rim);
+  row-gap: 2px;
   background: var(--metal);
 }
-.window::before, .window::after, .menu::before, .menu::after {
+:is(.window, .menu, .title-bar)::before,
+:is(.window, .menu, .title-bar)::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
-.window::before, .menu::before {
+:is(.window, .menu, .title-bar)::before {
   background:
     linear-gradient(to right, var(--rail)) left / var(--rim) 100% no-repeat,
     linear-gradient(to left, var(--rail)) right / var(--rim) 100% no-repeat;
 }
-.window::after, .menu::after {
+:is(.window, .menu, .title-bar)::after {
   background:
     linear-gradient(to bottom, var(--rail)) top / 100% var(--rim) no-repeat,
     linear-gradient(to top, var(--rail)) bottom / 100% var(--rim) no-repeat;
@@ -42,7 +45,7 @@ body { margin: 0; }
     calc(100% - var(--rim)) calc(100% - var(--rim)), 100% 100%, 0 100%
   );
 }
-.window { --rim: calc(2 * var(--module)); }
+.window { --rim: clamp(14px, 1.4vw, 21px); }
 .window > svg[hidden] {
   position: absolute;
   width: 0;
@@ -50,11 +53,13 @@ body { margin: 0; }
   overflow: hidden;
 }
 .title-bar {
-  padding: 0 clamp(.65rem, 2vw, 2rem) .11em;
-  border: 1px solid #645c53;
-  border-bottom: 6px solid transparent;
-  border-image: linear-gradient(to bottom, #565049, #fff9f1 25%, #756c62 66%, #e1dad1 85%, #524c46) 1;
+  --rim: clamp(7px, .95vw, 14px);
+  position: relative;
+  padding: calc(var(--rim) + .03em) calc(var(--rim) + clamp(.3rem, 1vw, 1rem)) calc(var(--rim) + .06em);
+  background: var(--metal);
+  box-shadow: 0 2px 3px #342b2752;
   font-size: clamp(1.25rem, 2.9vw, 2.45rem);
+  line-height: 1.12;
 }
 .title-bar a { color: inherit; text-decoration: none; }
 .stage { display: grid; place-items: center; padding: calc(2 * var(--module)); }
